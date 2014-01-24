@@ -1,3 +1,8 @@
 TODO:
-	Make the X-carriage use 4 LM8UUs
-	Make the extruder mountable with more then 2 screws (bit too wobbly)
+	Update the STLs according to our source (currently reflecting the original vanilla repo)
+	Merge the non-vanilla files we use into this repo
+	Add any other printed files we use (wades, etc)
+	Add our lasercut frame
+	Add source for the parts we converted to lasercut
+	Remove superfluous files
+	Adjust README to reflect our settings
