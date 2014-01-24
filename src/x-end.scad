@@ -31,15 +31,15 @@ translate(v=[-1,0,0]){
 // Stress relief
 translate(v=[-5.5-10+1.5,-10-1,30]) cube(size = [20,1,28], center = true);
 difference(){
-	translate(v=[-5.5-10+1.5,-10,30]) cube(size = [10,46,28], center = true);
+	translate(v=[-5.5-10+1.5,-10,30-1]) cube(size = [10,46,28+2], center = true);
 
 	
 
 	// Nice edges
-	translate(v=[-5.5-10+1.5,-10,30+23]) rotate([0,45,0]) cube(size = [10,46,28], center = true);
-	translate(v=[-5.5-10+1.5,-10,30+23]) rotate([0,-45,0]) cube(size = [10,46,28], center = true);
-	translate(v=[-5.5-10+1.5,-10,30-23]) rotate([0,45,0]) cube(size = [10,46,28], center = true);
-	translate(v=[-5.5-10+1.5,-10,30-23]) rotate([0,-45,0]) cube(size = [10,46,28], center = true);
+	translate(v=[-5.5-10+1.5,-10,30+23+1]) rotate([0,45,0]) cube(size = [10,46,28], center = true);
+	translate(v=[-5.5-10+1.5,-10,30+23+1]) rotate([0,-45,0]) cube(size = [10,46,28], center = true);
+	translate(v=[-5.5-10+1.5,-10,30-23-3]) rotate([0,45,0]) cube(size = [10,46,28], center = true);
+	translate(v=[-5.5-10+1.5,-10,30-23-3]) rotate([0,-45,0]) cube(size = [10,46,28], center = true);
 
 }
 }
