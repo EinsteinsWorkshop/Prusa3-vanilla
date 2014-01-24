@@ -45,12 +45,12 @@ difference(){
 }
 
 // Bottom pushfit rod
-translate(v=[-15,-41.5,6]) rotate(a=[-90,0,0]) pushfit_rod(8.1,50);
+translate(v=[-15,-41.5,6]) rotate(a=[-90,0,0]) pushfit_rod(8.2,55);
 // Top pushfit rod
-translate(v=[-15,-41.5,rod_distance+6]) rotate(a=[-90,0,0]) pushfit_rod(8.1,50);
+translate(v=[-15,-41.5,rod_distance+6]) rotate(a=[-90,0,0]) pushfit_rod(8.2,55);
 // Nut trap
  translate(v=[0,-17,-0.5]) poly_cylinder(h = 4, r=2.6, $fn=25);
- translate(v=[0,-17,3]) rotate([0,0,30]) cylinder(h = 10, r=4.5, $fn = 6);
+ translate(v=[0,-17,3]) rotate([0,0,30]) cylinder(h = 10, r=4.5+.3, $fn = 6);
 }
 
 
