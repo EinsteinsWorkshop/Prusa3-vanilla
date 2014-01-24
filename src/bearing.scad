@@ -2,8 +2,7 @@
 // Bearing holders
 // GNU GPL v3
 // Josef Průša <iam@josefprusa.cz> and contributors
-// http://www.reprap.org/wiki/Prusa_Mendel
-// http://prusamendel.org
+// http://www.reprap.org/wiki/Prusa_i3
 
 use <polyholes.scad>
 
@@ -38,7 +37,61 @@ module horizontal_bearing_holes(bearings=1){
    translate(v=[0,10,12]) rotate(a=[90,0,0]) translate(v=[0,0,0]) cylinder(h = 24, r=10, $fn=50);
   }
  }
+}
+
+module vert_ziptie_base(bearings=1){
+   translate([-11.5,0,29])
+   rotate([90,0,0])
+   rotate([0,90,0])
+   translate(v=[0,0,6]) cube(size = [21,8+bearings*25,18], center = true);	
+}
+
+module vert_ziptie_cutouts(bearings=1){
+   cutter_lenght = 10+bearings*25;
+   one_holder_lenght = 8+25;
+   holder_lenght = 8+bearings*25;
+   ziptie_cut_ofset = 0;
+
+   translate([-12,0,29])
+   rotate([90,0,0])
+   rotate([0,90,0])
+   union(){
  
+   // Main bearing cut
+   difference(){
+      translate(v=[0,0,12]) rotate(a=[90,0,0]) translate(v=[0,0,-cutter_lenght/2]) cylinder(h = cutter_lenght, r=bearing_diameter/2, $fn=50);
+      // Bearing retainers
+      translate(v=[0,1-holder_lenght/2,3]) cube(size = [24,6,8], center = true);
+      translate(v=[0,-1+holder_lenght/2,3]) cube(size = [24,6,8], center = true);
+   }
+ 
+   // Ziptie cutouts
+   translate([0,0,-3]) scale([1,1,1.125])
+      for ( i = [0 : bearings-1] ){
+         // For easier positioning I move them by half of one 
+         // bearing holder then add each bearing length and then center again
+         translate(v=[0,-holder_lenght/2,0]) translate(v=[0,one_holder_lenght/2+i*25,0]) difference(){
+         union(){
+            translate(v=[0,2-6,12]) rotate(a=[90,0,0]) translate(v=[0,0,0]) cylinder(h = 4, r=12.5, $fn=50);
+            translate(v=[0,2+6,12]) rotate(a=[90,0,0]) translate(v=[0,0,0]) cylinder(h = 4, r=12.5, $fn=50);
+         }
+         translate(v=[0,10,12]) rotate(a=[90,0,0]) translate(v=[0,0,0]) cylinder(h = 24, r=10, $fn=50);
+      }
+      }
+}
+ 
+}
+
+module vertical_ziptie_bearing(){
+   union(){
+      // translate([-12,0,29])
+      // rotate([90,0,0])
+      // rotate([0,90,0])
+      difference(){
+         vert_ziptie_base(2);
+         vert_ziptie_cutouts(2);
+      }
+   }
 }
 
 module horizontal_bearing_test(){
@@ -72,7 +125,10 @@ module vertical_bearing_holes(){
 
 }
 
+vertical_ziptie_bearing();
+/*
+translate([0,0,0])
 difference(){
 vertical_bearing_base();
 vertical_bearing_holes();
-}
+}*/

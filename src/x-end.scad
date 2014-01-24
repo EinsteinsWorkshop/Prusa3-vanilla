@@ -14,7 +14,8 @@ module x_end_base(){
 height = 58;
 translate(v=[-15,-9,height/2]) cube(size = [17,39,height], center = true);
 // Bearing holder
- vertical_bearing_base();	
+vert_ziptie_base(2);
+// vertical_bearing_base();	
 //Nut trap
  // Cube
  translate(v=[-2-2,-17,4]) cube(size = [8,16,8], center = true);
@@ -23,7 +24,8 @@ translate(v=[-15,-9,height/2]) cube(size = [17,39,height], center = true);
 }
 
 module x_end_holes(){
- vertical_bearing_holes();
+vert_ziptie_cutouts(2);
+// vertical_bearing_holes();
 // Belt hole
 translate(v=[-1,0,0]){
 // Stress relief
